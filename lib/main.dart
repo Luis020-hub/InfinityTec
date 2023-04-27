@@ -38,13 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   List listaTecnologia = [];
 
   Future tecnologia() async {
-    final uri = Uri.parse('http://rss.uol.com.br/feed/tecnologia.xml');
+    final uri = Uri.parse('https://feeds.feedburner.com/gadgets360-latest');
     final response = await http.get(uri);
     xml2json.parse(response.body.toString());
     var jsondata = await xml2json.toGData();
     var data = jsonDecode(jsondata);
     listaTecnologia = data['rss']['channel']['item'];
-    // print(listaTecnologia);
+    print(listaTecnologia);
   }
 
   @override
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Uol'),
+        title: const Text('World News'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(2.0),
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             vertical: 10,
                           ),
                           child: Text(
-                            'Notícias',
+                            'Technology',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 22),
                           ),
@@ -105,8 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     return DetailScreen(
                                       title: listaTecnologia[index]['title']
                                           ['__cdata'],
-                                      // imageData: listaTecnologia[index][''] Problema
-                                      // ['url'],
+                                      imageData: listaTecnologia[index]
+                                          ['media\$content']['url'],
                                       description: listaTecnologia[index]
                                           ['description']['__cdata'],
                                       date: listaTecnologia[index]['pubDate']
@@ -125,14 +125,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                // Problema
-                                // leading: Image.network(
-                                //   listaTecnologia[index]['media\$content']
-                                //       ['url'],
-                                //   fit: BoxFit.cover,
-                                //   height: 80,
-                                //   width: 80,
-                                // ),
+                                leading: Image.network(
+                                  listaTecnologia[index]['media\$content']
+                                      ['url'],
+                                  fit: BoxFit.cover,
+                                  height: 80,
+                                  width: 80,
+                                ),
                               ),
                             );
                           },

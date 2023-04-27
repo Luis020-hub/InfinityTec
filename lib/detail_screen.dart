@@ -26,12 +26,11 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       body: ListView(
         children: [
-          // Problema
-          // Image.network(
-          //   widget.imageData,
-          //   width: double.infinity,
-          //   fit: BoxFit.cover,
-          // ),
+          Image.network(
+            widget.imageData,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 15,
@@ -50,7 +49,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    widget.date.toString().toString().replaceRange(0, 4, ''),
+                    widget.date.toString().toString().replaceRange(15, 30, ''),
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 13,
