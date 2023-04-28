@@ -90,6 +90,8 @@ class _HomePageState extends State<HomePage> {
                                           ['description']['__cdata'],
                                       date: listaTecnologia[index]['pubDate']
                                           ['__cdata'],
+                                      link: listaTecnologia[index]['link']
+                                          ['__cdata'],
                                     );
                                   }));
                                 },

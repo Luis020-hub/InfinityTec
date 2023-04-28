@@ -7,6 +7,7 @@ class DetailScreen extends StatefulWidget {
   final imageData;
   final description;
   final date;
+  final link;
 
   const DetailScreen({
     super.key,
@@ -14,6 +15,7 @@ class DetailScreen extends StatefulWidget {
     this.imageData,
     this.description,
     this.date,
+    this.link,
   });
 
   @override
@@ -46,23 +48,40 @@ class _DetailScreenState extends State<DetailScreen> {
                     fontSize: 20,
                   ),
                 ),
+                Text(
+                  widget.date.toString().toString().replaceRange(15, 30, ''),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13,
+                  ),
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   child: Text(
-                    widget.date.toString().toString().replaceRange(15, 30, ''),
+                    widget.description.toString(),
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 13,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                  child: Text(
+                    'Access for more information:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
                   ),
                 ),
                 Text(
-                  widget.description.toString(),
+                  widget.link.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
                   ),
-                )
+                ),
               ],
             ),
           ),
