@@ -26,6 +26,10 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('News'),
+      ),
       body: ListView(
         children: [
           Image.network(
