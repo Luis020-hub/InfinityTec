@@ -5,29 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:infinity/screens/detail_screen.dart';
 import 'package:xml2json/xml2json.dart';
 import 'package:http/http.dart' as http;
-import '../components/main_drawer.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class TechScreen extends StatefulWidget {
+  const TechScreen({super.key});
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<TechScreen> createState() => _TechScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TechScreenState extends State<TechScreen> {
   final Xml2Json xml2json = Xml2Json();
-  List listaTecnologia = [];
+  List lista = [];
+
   void refresh() {
     setState(() {});
   }
 
-  Future tecnologia() async {
+  Future technology() async {
     final uri = Uri.parse('https://feeds.feedburner.com/gadgets360-latest');
     final response = await http.get(uri);
     xml2json.parse(response.body.toString());
     var jsondata = await xml2json.toGData();
     var data = jsonDecode(jsondata);
-    listaTecnologia = data['rss']['channel']['item'];
-    // print(listaTecnologia);
+    lista = data['rss']['channel']['item'];
+    // print(lista);
   }
 
   @override
@@ -35,7 +36,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('World News'),
+        title: const Text(
+          'Technology',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
         iconTheme: const IconThemeData(
           size: 28.0,
           color: Colors.white,
@@ -53,12 +60,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: const MainDrawer(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: FutureBuilder(
-            future: tecnologia(),
+            future: technology(),
             builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
                   ? const SizedBox(
@@ -75,20 +81,12 @@ class _HomePageState extends State<HomePage> {
                           const Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 10,
-                            ),
-                            child: Text(
-                              'Technology',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                              ),
                             ),
                           ),
                           ListView.builder(
                             shrinkWrap: true,
                             controller: ScrollController(),
-                            itemCount: listaTecnologia.length,
+                            itemCount: lista.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
                                 decoration: const BoxDecoration(
@@ -108,15 +106,15 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(
                                         builder: (BuildContext context) {
                                           return DetailScreen(
-                                            title: listaTecnologia[index]
-                                                ['title']['__cdata'],
-                                            imageData: listaTecnologia[index]
+                                            title: lista[index]['title']
+                                                ['__cdata'],
+                                            imageData: lista[index]
                                                 ['media\$content']['url'],
-                                            description: listaTecnologia[index]
+                                            description: lista[index]
                                                 ['description']['__cdata'],
-                                            date: listaTecnologia[index]
-                                                ['pubDate']['__cdata'],
-                                            link: listaTecnologia[index]['link']
+                                            date: lista[index]['pubDate']
+                                                ['__cdata'],
+                                            link: lista[index]['link']
                                                 ['__cdata'],
                                           );
                                         },
@@ -130,13 +128,12 @@ class _HomePageState extends State<HomePage> {
                                     horizontal: 8,
                                   ),
                                   title: Text(
-                                    listaTecnologia[index]['title']['__cdata'],
+                                    lista[index]['title']['__cdata'],
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   leading: Image.network(
-                                    listaTecnologia[index]['media\$content']
-                                        ['url'],
+                                    lista[index]['media\$content']['url'],
                                     fit: BoxFit.cover,
                                     height: 80,
                                     width: 80,
