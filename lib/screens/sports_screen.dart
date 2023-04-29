@@ -41,11 +41,12 @@ class _SportsScreenState extends State<SportsScreen> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 22,
+            color: Colors.black,
           ),
         ),
         iconTheme: const IconThemeData(
           size: 28.0,
-          color: Colors.white,
+          color: Colors.black,
           opacity: 10.0,
         ),
         actions: <Widget>[

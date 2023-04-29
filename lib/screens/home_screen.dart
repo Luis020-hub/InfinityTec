@@ -3,6 +3,7 @@ import 'package:infinity/screens/health_screen.dart';
 import 'package:infinity/screens/sports_screen.dart';
 import 'package:infinity/screens/technology_screen.dart';
 import 'package:infinity/screens/business_screen.dart';
+import 'package:infinity/components/main_drawer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MainDrawer(),
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         centerTitle: true,
         title: const Text(
           'World News',
@@ -61,7 +64,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Ink.image(
                   image: const NetworkImage(
-                    'https://thenounproject.com/api/private/icons/4618512/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABkTWSFwGUezQPCWiMfxAAwZqMP9EPrsmvM1reoLJyMcoB-rTFTXmQHwAiho-nv8R5iY2mqs1cOm6ufTrNbeOLlROKy1w%3D%3D',
+                    'https://static.thenounproject.com/png/1152587-200.png',
                   ),
                   height: 160,
                   width: 200,
@@ -88,7 +91,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Ink.image(
                   image: const NetworkImage(
-                    'https://thenounproject.com/api/private/icons/4712494/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABkTWSFwGUezQPCWiMfxAAwZqMP9EPrsmvM1reoLJyMcoB-rTFTXmQHwAiho-nv8R5iY2mqs1cOm6ufTrNbeOLlROKy1w%3D%3D',
+                    'https://static.thenounproject.com/png/5678592-200.png',
                   ),
                   height: 160,
                   width: 200,

@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.blue,
+          secondary: Colors.black,
+        ),
         canvasColor: const Color.fromRGBO(240, 240, 255, 1),
       ),
       home: const HomePage(),

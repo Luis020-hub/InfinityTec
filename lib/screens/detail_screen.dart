@@ -28,7 +28,17 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('News'),
+        title: const Text(
+          'News',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          size: 28.0,
+          color: Colors.black,
+          opacity: 10.0,
+        ),
       ),
       body: ListView(
         children: [

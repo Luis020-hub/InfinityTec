@@ -8,6 +8,7 @@ class MainDrawer extends StatelessWidget {
       leading: Icon(
         icon,
         size: 25,
+        color: Colors.black,
       ),
       title: Text(
         label,
@@ -29,34 +30,49 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             alignment: Alignment.bottomCenter,
-            color: Colors.blueGrey,
+            color: Colors.blue,
             child: const Text(
               'Welcome to \nWorld News',
               style: TextStyle(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w700,
                 fontSize: 25,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          _createDrawer(
-            Icons.home,
-            'Home',
-          ),
-          _createDrawer(
-            Icons.notifications,
-            'Notifications',
-          ),
-          _createDrawer(
-            Icons.star,
-            'Favorites',
-          ),
-          _createDrawer(
-            Icons.settings,
-            'Settings',
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 5,
+              vertical: 10,
+            ),
+            child: Wrap(
+              children: [
+                const SizedBox(
+                  height: 5,
+                ),
+                _createDrawer(
+                  Icons.home,
+                  'Home',
+                ),
+                _createDrawer(
+                  Icons.notifications,
+                  'Notifications',
+                ),
+                _createDrawer(
+                  Icons.star,
+                  'Favorites',
+                ),
+                _createDrawer(
+                  Icons.settings,
+                  'Settings',
+                ),
+                const Divider(color: Colors.black45),
+                _createDrawer(
+                  Icons.source,
+                  'Source',
+                ),
+              ],
+            ),
           ),
         ],
       ),
