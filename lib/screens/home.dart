@@ -2,9 +2,10 @@
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:infinity/detail_screen.dart';
+import 'package:infinity/screens/detail_screen.dart';
 import 'package:xml2json/xml2json.dart';
 import 'package:http/http.dart' as http;
+import '../components/main_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      drawer: const MainDrawer(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(2.0),
